@@ -2,7 +2,7 @@
 
 public class ConcretoStudyType : StudyType
 {
-    public override string Type => "concreto";
+    public override string TypeName => "concreto";
 
     public override string DisplayName => "Estudo de torre: Alvenaria Estrutural";
 

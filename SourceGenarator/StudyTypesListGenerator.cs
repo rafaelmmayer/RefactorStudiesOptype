@@ -77,7 +77,7 @@ public class StudyTypesGenerator : IIncrementalGenerator
         sb.AppendLine();
         sb.AppendLine("namespace Core.Domain.Studies.Types;");
         sb.AppendLine();
-        sb.AppendLine("public static class StudyTypesList");
+        sb.AppendLine("public static class StudyTypes");
         sb.AppendLine("{");
 
         // Lista para guardar os nomes das propriedades para usar no array depois
@@ -99,10 +99,10 @@ public class StudyTypesGenerator : IIncrementalGenerator
 
             // Gera: public static readonly global::Core.Domain.Studies.StudyType Alvenaria = new global::...();
             sb.AppendLine($"    public static readonly global::{BaseClassFullName} {propertyName} = new {fullClassName}();");
-            sb.AppendLine();
         }
 
         // Gerar o Array List
+        sb.AppendLine();
         sb.AppendLine($"    public static global::{BaseClassFullName}[] List => new global::{BaseClassFullName}[]");
         sb.AppendLine("    {");
         
@@ -114,6 +114,6 @@ public class StudyTypesGenerator : IIncrementalGenerator
         sb.AppendLine("    };");
         sb.AppendLine("}");
 
-        context.AddSource("StudyTypesList.g.cs", SourceText.From(sb.ToString(), Encoding.UTF8));
+        context.AddSource("StudyTypes.g.cs", SourceText.From(sb.ToString(), Encoding.UTF8));
     }
 }

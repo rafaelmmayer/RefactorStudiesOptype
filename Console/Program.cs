@@ -4,8 +4,8 @@ using Infra;
 using Microsoft.Extensions.DependencyInjection;
 
 var services = new ServiceCollection();
-services.AddPocketBase();
 services.AddApplication();
+services.AddInfra();
 
 var provider = services.BuildServiceProvider();
 

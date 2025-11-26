@@ -1,4 +1,5 @@
 ﻿using Infra.Clients.Pocketbase;
+using Infra.Factory;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infra;
@@ -28,5 +29,10 @@ public static class ServiceCollectionExtensions
             
             return new PbClient(http, auth);
         });
+    }
+
+    public static void AddInfra(this IServiceCollection services)
+    {
+        services.AddPocketBase();
     }
 }

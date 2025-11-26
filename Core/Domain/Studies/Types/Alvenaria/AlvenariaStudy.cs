@@ -2,14 +2,10 @@
 
 namespace Core.Domain.Studies.Types.Alvenaria;
 
-public class AlvenariaStudy : Study<AlvenariaStudyInputs, AlvenariaStudyOutputs>
+[StudyDefinition(typeof(AlvenariaStudyInputs), typeof(AlvenariaStudyOutputs))]
+public class AlvenariaStudy : Study
 {
-    public override StudyType Type => StudyTypesList.Alvenaria;
-    
-    public AlvenariaStudy(AlvenariaStudyInputs inputs, AlvenariaStudyOutputs outputs) 
-        : base(inputs, outputs)
-    {
-    }
+    public override StudyType Type => StudyTypes.Alvenaria;
 
     public override ExportToExcelResults ExportToExcel()
     {
