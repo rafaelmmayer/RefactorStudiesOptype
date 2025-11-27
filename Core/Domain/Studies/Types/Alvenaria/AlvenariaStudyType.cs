@@ -2,7 +2,7 @@
 
 public class AlvenariaStudyType : StudyType
 {
-    public override string Type => "alvenaria";
+    public override string TypeName => "alvenaria";
 
     public override string DisplayName => "Estudo de torre: Alvenaria Estrutural";
 

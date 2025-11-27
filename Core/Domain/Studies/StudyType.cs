@@ -2,7 +2,7 @@
 
 public abstract class StudyType
 {
-    public abstract string Type { get; }
+    public abstract string TypeName { get; }
     public abstract string DisplayName { get; }
     public abstract string Descriptions { get; }
     public abstract double Credits { get; }

@@ -10,7 +10,7 @@ public readonly struct StudyStatus
 
     public string Value { get; }
 
-    private StudyStatus(string value)
+    public StudyStatus(string value)
     {
         Value = value;
     }
