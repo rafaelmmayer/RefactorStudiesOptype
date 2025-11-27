@@ -9,8 +9,8 @@ services.AddApplication();
 
 var provider = services.BuildServiceProvider();
 
-var processStudy = provider.GetRequiredService<ProcessStudy>();
+var useCase = provider.GetRequiredService<ChangeWorkspaceIds>();
 
-await processStudy.Execute("9dfb03494e984eef9801171ef48428ac");
+await useCase.Execute();
 
 Console.WriteLine();
