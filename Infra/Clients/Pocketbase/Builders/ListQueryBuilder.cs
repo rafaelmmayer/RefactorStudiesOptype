@@ -5,9 +5,10 @@ using RestSharp;
 
 namespace Infra.Clients.Pocketbase.Builders;
 
-public class ListQueryBuilder<T> : QueryBuilderBase where T : class
+public class ListQueryBuilder<T> : QueryBuilderBase
+    where T : class
 {
-    public ListQueryBuilder(PbClient client, string name) 
+    public ListQueryBuilder(PbClient client, string name)
         : base(client, name) { }
 
     public ListQueryBuilder<T> Page(int p)
@@ -33,7 +34,7 @@ public class ListQueryBuilder<T> : QueryBuilderBase where T : class
         AddQuery("filter", filter);
         return this;
     }
-    
+
     public ListQueryBuilder<T> Expand(string expand)
     {
         AddQuery("expand", expand);
@@ -43,11 +44,11 @@ public class ListQueryBuilder<T> : QueryBuilderBase where T : class
     public async Task<ListResult<T>> ExecuteAsync()
     {
         var req = new RestRequest($"/api/collections/{CollectionName}/records");
-        
+
         ApplyQuery(req);
-        
+
         var res = await Client.Rest.GetAsync<ListResult<T>>(req);
-        
+
         if (res is null)
         {
             throw new Exception("Requisição falhou. Não foi possível obter o registro.");
@@ -55,16 +56,14 @@ public class ListQueryBuilder<T> : QueryBuilderBase where T : class
 
         return res;
     }
-    
+
     public async Task<T?> FirstOrDefaultAsync()
     {
         AddQuery("perPage", "1");
 
         AddQuery("skipTotal", "true");
 
-        var req = new RestRequest(
-            $"/api/collections/{CollectionName}/records"
-        );
+        var req = new RestRequest($"/api/collections/{CollectionName}/records");
 
         ApplyQuery(req);
 

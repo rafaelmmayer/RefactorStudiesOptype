@@ -26,7 +26,7 @@ public class PbTokenService
                 return _token;
 
             var req = new RestRequest("/api/collections/_superusers/auth-with-password");
-            
+
             req.AddBody(new { identity = "inovacao@optype.com.br", password = "Optype_2025" });
 
             var res = await _rest.PostAsync<JObject>(req, ct);

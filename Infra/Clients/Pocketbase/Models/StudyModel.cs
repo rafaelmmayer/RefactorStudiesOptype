@@ -11,9 +11,9 @@ public class StudyModel : BasePbModel
     public string Type { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public string Status { get; set; } = string.Empty;
-    public JObject Inputs { get; set; } = null!;
+    public JObject? Inputs { get; set; }
     public JObject? Outputs { get; set; }
-    
+
     public string WorkspaceId { get; set; } = string.Empty;
 
     public ProjectModel? Project => Get<ProjectModel>("projectId");

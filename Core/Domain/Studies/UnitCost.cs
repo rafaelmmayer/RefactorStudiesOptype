@@ -1,6 +1,3 @@
 ﻿namespace Core.Domain.Studies;
 
-public class UnitCost
-{
-    
-}
+public class UnitCost { }

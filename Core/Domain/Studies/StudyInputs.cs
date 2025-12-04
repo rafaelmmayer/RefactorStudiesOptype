@@ -1,13 +1,31 @@
-﻿using Core.Domain.Studies.Results;
+﻿namespace Core.Domain.Studies;
 
-namespace Core.Domain.Studies;
-
-public interface IValidator
+public abstract class StudyInputs
 {
-    ValidateResult Validate();
 }
 
-public abstract class StudyInputs : IValidator
+public interface ISetAdvancedInputs
 {
-    public abstract ValidateResult Validate();
+    public void SetAdvancedInputs(StudyAdvancedInputs advancedInputs);
 }
+
+public abstract class StudyInputs<T> : StudyInputs, ISetAdvancedInputs
+    where T : StudyAdvancedInputs
+{
+    public T AdvancedInputs { get; private set; } = null!;
+    
+    public void SetAdvancedInputs(StudyAdvancedInputs advancedInputs)
+    {
+        if (advancedInputs is not T typed)
+        {
+            throw new ArgumentException(
+                $"Tipo inválido para SetInputs. Esperado: {typeof(T).Name}, "
+                + $"recebido: {advancedInputs.GetType().Name}."
+            );
+        }
+
+        AdvancedInputs = typed;
+    }
+}
+
+public abstract class StudyAdvancedInputs {} 

@@ -1,13 +1,13 @@
-﻿using Core.Domain.Studies.Results;
+﻿namespace Core.Domain.Studies.Types.Alvenaria;
 
-namespace Core.Domain.Studies.Types.Alvenaria;
-
-[StudyDefinition(typeof(AlvenariaStudyInputs), typeof(AlvenariaStudyOutputs))]
-public class AlvenariaStudy : Study
+public class AlvenariaStudy : Study<AlvenariaStudyInputs, AlvenariaOutputs>
 {
-    public override StudyType Type => StudyTypes.Alvenaria;
+    public AlvenariaStudy()
+    {
+        Type = StudyTypes.Alvenaria;
+    }
 
-    public override ExportToExcelResults ExportToExcel()
+    public override double CalculateCost()
     {
         throw new NotImplementedException();
     }

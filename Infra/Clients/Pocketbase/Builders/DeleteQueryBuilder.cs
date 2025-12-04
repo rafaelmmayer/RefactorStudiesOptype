@@ -2,7 +2,8 @@
 
 namespace Infra.Clients.Pocketbase.Builders;
 
-public class DeleteQueryBuilder<T> : QueryBuilderBase where T : class
+public class DeleteQueryBuilder<T> : QueryBuilderBase
+    where T : class
 {
     private readonly string _id;
 

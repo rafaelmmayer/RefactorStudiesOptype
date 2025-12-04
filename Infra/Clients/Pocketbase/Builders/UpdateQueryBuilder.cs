@@ -4,7 +4,8 @@ using RestSharp;
 
 namespace Infra.Clients.Pocketbase.Builders;
 
-public class UpdateQueryBuilder<T> : QueryBuilderBase where T : class
+public class UpdateQueryBuilder<T> : QueryBuilderBase
+    where T : class
 {
     private readonly string _id;
     private readonly object _data;
@@ -24,16 +25,13 @@ public class UpdateQueryBuilder<T> : QueryBuilderBase where T : class
 
     public async Task<T> ExecuteAsync()
     {
-        var req = new RestRequest(
-            $"/api/collections/{CollectionName}/records/{_id}",
-            Method.Patch
-        );
+        var req = new RestRequest($"/api/collections/{CollectionName}/records/{_id}", Method.Patch);
 
         ApplyQuery(req);
         req.AddJsonBody(_data);
-        
+
         var res = await Client.Rest.PatchAsync<T>(req);
-        
+
         if (res is null)
         {
             throw new Exception("Requisição falhou. Não foi possível obter o registro.");

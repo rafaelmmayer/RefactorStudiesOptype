@@ -1,13 +1,11 @@
-﻿using Core.Domain.Studies.Results;
+﻿namespace Core.Domain.Studies.Types.Alvenaria;
 
-namespace Core.Domain.Studies.Types.Alvenaria;
-
-public class AlvenariaStudyInputs : StudyInputs
+public class AlvenariaStudyInputs : StudyInputs<AlvenariaStudyAdvancedInputs>
 {
-    public string TipoDeBloco { get; set; } = string.Empty;
-    
-    public override ValidateResult Validate()
-    {
-        throw new NotImplementedException();
-    }
+    public string TipoDeBloco { get; set; } = "asdsadasd";
+}
+
+public class AlvenariaStudyAdvancedInputs : StudyAdvancedInputs
+{
+    public string TipoDeArmacaoDasLajes { get; set; } = string.Empty;
 }

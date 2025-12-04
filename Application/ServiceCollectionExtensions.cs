@@ -9,5 +9,6 @@ public static class ServiceCollectionExtensions
     {
         services.AddTransient<ProcessStudy>();
         services.AddTransient<ChangeWorkspaceIds>();
+        services.AddTransient<CreateStudy>();
     }
 }

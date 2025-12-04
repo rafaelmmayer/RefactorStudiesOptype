@@ -1,6 +1,9 @@
-﻿using Infra.Clients.Pocketbase;
+﻿using Core.Domain.Studies;
+using Core.Domain.Studies.Export;
+using Core.Domain.Studies.Types.Alvenaria;
+using Infra.Clients.Pocketbase;
 using Infra.Clients.Pocketbase.Models;
-using Infra.Factory;
+using Infra.Converts;
 
 namespace Application.UseCases;
 
@@ -8,8 +11,7 @@ public class ProcessStudy
 {
     private readonly PbClient _pbClient;
 
-    public ProcessStudy(
-        PbClient pbClient)
+    public ProcessStudy(PbClient pbClient)
     {
         _pbClient = pbClient;
     }
@@ -20,8 +22,12 @@ public class ProcessStudy
             .View(studyId)
             .ExecuteAsync();
         
-        var study = StudyConverter.Convert(studyModel);
-
-        study?.Inputs.Validate();
+        var study = PbStudyConverter.Convert(studyModel);
+        
+        var validate = study.ValidateInputs();
+            
+        if (validate.IsValid)
+        {
+        }
     }
 }

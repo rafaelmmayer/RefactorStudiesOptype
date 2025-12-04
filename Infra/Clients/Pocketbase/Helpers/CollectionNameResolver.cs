@@ -8,11 +8,7 @@ public static class CollectionNameResolver
     {
         var type = typeof(T);
 
-        var attributes = type
-            .GetCustomAttributes(
-                typeof(CollectionAttribute),
-                false
-            );
+        var attributes = type.GetCustomAttributes(typeof(CollectionAttribute), false);
 
         if (attributes.FirstOrDefault() is CollectionAttribute attr)
         {

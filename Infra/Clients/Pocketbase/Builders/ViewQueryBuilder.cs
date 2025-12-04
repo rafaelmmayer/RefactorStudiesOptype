@@ -2,7 +2,8 @@
 
 namespace Infra.Clients.Pocketbase.Builders;
 
-public class ViewQueryBuilder<T> : QueryBuilderBase where T : class
+public class ViewQueryBuilder<T> : QueryBuilderBase
+    where T : class
 {
     private readonly string _id;
 
@@ -17,12 +18,10 @@ public class ViewQueryBuilder<T> : QueryBuilderBase where T : class
 
     public async Task<T> ExecuteAsync()
     {
-        var req = new RestRequest(
-            $"/api/collections/{CollectionName}/records/{_id}"
-        );
+        var req = new RestRequest($"/api/collections/{CollectionName}/records/{_id}");
 
         ApplyQuery(req);
-        
+
         var res = await Client.Rest.GetAsync<T>(req);
 
         if (res is null)

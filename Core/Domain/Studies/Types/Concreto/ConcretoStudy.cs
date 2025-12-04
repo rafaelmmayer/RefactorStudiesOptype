@@ -1,13 +1,13 @@
-﻿using Core.Domain.Studies.Results;
+﻿namespace Core.Domain.Studies.Types.Concreto;
 
-namespace Core.Domain.Studies.Types.Concreto;
-
-[StudyDefinition(typeof(ConcretoStudyInputs), typeof(ConcretoStudyOutputs))]
-public class ConcretoStudy : Study
+public class ConcretoStudy : Study<ConcretoStudyInputs, ConcretoOutputs>
 {
-    public override StudyType Type => StudyTypes.Concreto;
+    public ConcretoStudy()
+    {
+        Type = StudyTypes.Concreto;
+    }
 
-    public override ExportToExcelResults ExportToExcel()
+    public override double CalculateCost()
     {
         throw new NotImplementedException();
     }

@@ -5,7 +5,8 @@ using RestSharp;
 
 namespace Infra.Clients.Pocketbase.Builders;
 
-public class FullListQueryBuilder<T> : QueryBuilderBase where T : class
+public class FullListQueryBuilder<T> : QueryBuilderBase
+    where T : class
 {
     public FullListQueryBuilder(PbClient client, string name)
         : base(client, name)
@@ -39,9 +40,7 @@ public class FullListQueryBuilder<T> : QueryBuilderBase where T : class
 
         while (true)
         {
-            var req = new RestRequest(
-                $"/api/collections/{CollectionName}/records"
-            );
+            var req = new RestRequest($"/api/collections/{CollectionName}/records");
 
             // paginação interna automática
             req.AddQueryParameter("page", page.ToString());
