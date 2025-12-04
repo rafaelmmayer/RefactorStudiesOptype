@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useSpeckleViewer } from '@/speckle/useSpeckleViewer';
-import { useStudyProvider } from '@/composables/useStudy';
+import { useStudyProvider } from '@/studies/.lib/useStudy';
 import { db } from '@/data';
 import type { Study, StudyModel } from '@/types/study';
 import { onMounted, ref, defineAsyncComponent } from 'vue';

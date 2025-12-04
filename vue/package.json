@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview",
-    "generate:types": "node scripts/generate-study-types.js"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@speckle/viewer": "^2.26.8",

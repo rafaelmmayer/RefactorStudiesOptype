@@ -17,7 +17,6 @@ export function registerLegendService<T extends StudyType>(
 }
 
 export function createLegendService<T extends StudyType>(model: SpeckleModel<T>) {
-  debugger
   const type = model.studyModel.study.type;
 
   const Target = LegendRegistry[type];
